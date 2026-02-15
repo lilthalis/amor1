@@ -1,0 +1,188 @@
+body{
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+    background-color:#8B1538;
+    background-image: url("foto/1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+}
+
+/* estrelas */
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url("https://i.imgur.com/YKY28eT.png");
+    animation:moveStars 60s linear infinite;
+}
+
+@keyframes moveStars{
+    from{ background-position:0 0; }
+    to{ background-position:0 1000px; }
+}
+
+/* foto surpresa */
+.foto{
+    position:absolute;
+    width:220px;
+    max-width:40vw;
+    border-radius:20px;
+    opacity:0;
+    left:50%;
+    bottom:18vh;
+    transform:translateX(-50%) scale(0);
+    transition:1s;
+    z-index:5;
+}
+
+.foto.show{
+    opacity:1;
+    transform:translateX(-50%) scale(1);
+}
+
+/* coração central */
+.heart{
+    position:absolute;
+    width:200px;
+    height:200px;
+    background:red;
+    transform: rotate(-45deg);
+    animation:pulse 1.5s infinite;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:200px;
+    height:200px;
+    background:red;
+    border-radius:50%;
+}
+
+.heart::before{ top:-100px; }
+.heart::after{ left:100px; }
+
+@keyframes pulse{
+    0%{transform: rotate(-45deg) scale(1);}
+    50%{transform: rotate(-45deg) scale(1.1);}
+    100%{transform: rotate(-45deg) scale(1);}
+}
+
+/* botão */
+/* card central */
+.card{
+    position:relative;
+    width:min(900px, 90vw);
+    height:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:2rem;
+    padding:3rem 2rem 2rem 2rem;
+    border-radius:24px;
+    background:linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    backdrop-filter: blur(6px);
+    z-index:6;
+}
+
+/* photo styling */
+.foto{
+    position:fixed;
+    left:50%;
+    bottom:18vh;
+    width:260px;
+    max-width:40vw;
+    border-radius:18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    border:4px solid rgba(255,255,255,0.06);
+    opacity:0;
+    transform:translateX(-50%) translateY(10px) scale(0.95);
+    transition: transform .7s ease, opacity .7s ease;
+    z-index:7;
+}
+
+.foto.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0) scale(1);
+}
+
+/* caption area */
+.caption{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+    color: #fff;
+    text-align:center;
+}
+
+.caption h1{
+    margin:0;
+    font-size:1.6rem;
+    letter-spacing:1px;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.6);
+}
+
+.caption .desc{
+    margin:0;
+    opacity:0.9;
+    font-size:1rem;
+}
+
+/* botão estilizado */
+button{
+    margin-top:0.6rem;
+    padding:12px 22px;
+    border:none;
+    border-radius:999px;
+    font-size:16px;
+    background: linear-gradient(90deg,#ff6b86,#ff3b6d);
+    color:white;
+    cursor:pointer;
+    box-shadow: 0 8px 18px rgba(255,77,109,0.18);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+button:hover{ transform: translateY(-4px); box-shadow: 0 16px 30px rgba(255,77,109,0.22); }
+
+/* frases */
+.msg{
+    position:absolute;
+    background:rgba(255,255,255,0.15);
+    padding:10px 20px;
+    border-radius:20px;
+    color:white;
+    backdrop-filter:blur(10px);
+    animation:floatUp 4s linear forwards;
+}
+
+@keyframes floatUp{
+    from{ transform:translateY(0); opacity:1; }
+    to{ transform:translateY(-250px); opacity:0; }
+}
+
+/* chuva de corações */
+.fall{
+    position:absolute;
+    color:red;
+    font-size:25px;
+    animation:fall 5s linear forwards;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-50px);
+        opacity:1;
+    }
+    to{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+}
